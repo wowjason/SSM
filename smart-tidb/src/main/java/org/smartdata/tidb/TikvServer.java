@@ -17,36 +17,25 @@
  */
 package org.smartdata.tidb;
 
-import com.sun.jna.Library;
-import com.sun.jna.Native;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TikvServer implements Runnable {
     private String args;
     private final static Logger LOG = LoggerFactory.getLogger(TikvServer.class);
+    private Tikv tikv;
 
-    public interface Tikv extends Library {
-        void startServer(String args);
-    }
-    public TikvServer(String args){
+    public TikvServer(String args,Tikv tikv){
         this.args=args;
+        this.tikv=tikv;
     }
     public void run(){
-        Tikv kv=null;
-        try {
-            kv= (Tikv) Native.loadLibrary("libtikv.so",Tikv.class);
-        }
-        catch (UnsatisfiedLinkError ex){
-            LOG.error(ex.getMessage());
-        }
-
         StringBuffer strbuffer=new StringBuffer();
         strbuffer.append("TiKV");  //@ App::new("TiKV") in start.rs, "TiKV" is the flag name used for parsing
         strbuffer.append(" ");
         strbuffer.append(args);
 
         LOG.info("Starting TiKV..");
-        kv.startServer(strbuffer.toString());
+        tikv.startServer(strbuffer.toString());
     }
 }
