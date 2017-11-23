@@ -12,7 +12,7 @@ before_install:
 
   - wget https://github.com/Intel-bigdata/ssm-tidb/archive/release-1.0.0.tar.gz
   - tar -xzvf release-1.0.0.tar.gz > tmp.log
-  - pushd ssm-tidb-release-1.0.0 && ./build_rocksdb.sh && ./build_shared_libs.sh
+  - pushd ssm-tidb-release-1.0.0 && ./build_rocksdb.sh && ./build_shared_libs.sh && popd
 
 #  - sh bin/build.sh
 
