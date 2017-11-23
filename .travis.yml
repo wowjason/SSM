@@ -29,3 +29,7 @@ install:
 script:
   - mvn test $PROFILE
 
+# safelist
+branches:
+  only:
+  - test-travis
