@@ -17,7 +17,7 @@ before_install:
 
   - wget https://static.rust-lang.org/dist/rust-nightly-x86_64-unknown-linux-gnu.tar.gz
   - tar -xzvf rust-nightly-x86_64-unknown-linux-gnu.tar.gz > tmp.log
-  - pushd rust-nightly-x86_64-unknown-linux-gnu && ./install.sh && popd
+  - pushd rust-nightly-x86_64-unknown-linux-gnu && sudo ./install.sh && popd
 
   - wget https://github.com/Intel-bigdata/ssm-tidb/archive/release-1.0.0.tar.gz
   - tar -xzvf release-1.0.0.tar.gz > tmp.log
