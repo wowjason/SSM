@@ -10,6 +10,15 @@ before_install:
   - tar -xzvf protobuf-2.5.0.tar.gz > tmp.log
   - pushd protobuf-2.5.0 && ./configure --prefix=/usr && make && sudo make install && popd
 
+  - wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
+  - tar -xzvf go1.8.3.linux-amd64.tar.gz > tmp.log
+  - export PATH=./go/bin:$PATH
+  - export GOROOT=./go
+
+  - wget https://static.rust-lang.org/dist/rust-nightly-x86_64-unknown-linux-gnu.tar.gz
+  - tar -xzvf rust-nightly-x86_64-unknown-linux-gnu.tar.gz > tmp.log
+  - pushd rust-nightly-x86_64-unknown-linux-gnu && ./install.sh && popd
+
   - wget https://github.com/Intel-bigdata/ssm-tidb/archive/release-1.0.0.tar.gz
   - tar -xzvf release-1.0.0.tar.gz > tmp.log
   - pushd ssm-tidb-release-1.0.0 && ./build_rocksdb.sh && ./build_shared_libs.sh && popd
