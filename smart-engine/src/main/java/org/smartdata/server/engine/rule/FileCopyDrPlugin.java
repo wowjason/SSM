@@ -101,7 +101,6 @@ public class FileCopyDrPlugin implements RuleExecutorPlugin {
             LOG.error("Insert backup info error:" + backUpInfo, e);
           }
         }
-        break;
       }
     }
   }
