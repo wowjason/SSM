@@ -102,7 +102,10 @@ public class LocalCmdletExecutorService extends CmdletExecutorService implements
   @Override
   public void report(StatusMessage status) {
     LOG.debug("Reporting status message " + status);
+    long startTime = System.currentTimeMillis();
     cmdletManager.updateStatus(status);
+    long finishTime = System.currentTimeMillis();
+    LOG.info("time used for updating statusf: {}", finishTime - startTime);
   }
 
   private String getActiveServerAddress() {
